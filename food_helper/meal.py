@@ -79,6 +79,47 @@ class Meal:
         return ingredients
     
 
+class NutritionCard:
+    def __init__(self, calories_amount, calories_percent_daily_serving,
+                 total_fat_amount, total_fat_percent_daily_serving,
+                 trans_fat_amount, trans_fat_percent_daily_serving,
+                 cholesterol_amount, cholesterol_percent_daily_serving,
+                 sodium_amount, sodium_percent_daily_serving,
+                 carbs_amount, carbs_percent_daily_serving,
+                 fiber_amount, fiber_percent_daily_serving,
+                 sugars_amount, sugars_percent_daily_serving,
+                 protein_amount, protein_percent_daily_serving,
+                 vitamin_a=0, vitamin_c=0, calcium=0, iron=0):
+        
+        self.calories = Nutrient(calories_amount, calories_percent_daily_serving)  # calories per serving
+        self.total_fat = Nutrient(total_fat_amount, total_fat_percent_daily_serving)  # total fat per serving
+        self.trans_fat = Nutrient(trans_fat_amount, trans_fat_percent_daily_serving)  # trans-fatty acid per serving
+        self.cholesterol = Nutrient(cholesterol_amount, cholesterol_percent_daily_serving)  # cholesterol per serving
+        self.sodium = Nutrient(sodium_amount, sodium_percent_daily_serving)  # salt per serving
+        self.carbs = Nutrient(carbs_amount, carbs_percent_daily_serving)  # carbohydrates per serving
+        self.fiber = Nutrient(fiber_amount, fiber_percent_daily_serving)  # fiber per serving
+        self.sugars = Nutrient(sugars_amount, sugars_percent_daily_serving)  # sugar per serving
+        self.protein = Nutrient(protein_amount, protein_percent_daily_serving)  # protein per serving
+        
+        self.vitamin_a = vitamin_a  # vitamin A per serving
+        self.vitamin_c = vitamin_c  # vitamin C per serving
+        self.calcium = calcium  # calcium per serving
+        self.iron = iron  # iron per serving
+        
+        
+class Nutrient:
+    def __init__(self, amount, percent_daily_serving):
+        self.amount = amount
+        self.percent_daily_serving = percent_daily_serving
+        
+        
+class Vitamin:
+    def __init__(self, percent_daily_serving):
+        self.percent_daily_serving = percent_daily_serving
+
+        
+        
+
 
 
 
