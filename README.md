@@ -8,5 +8,5 @@ See docs/installation.txt for more detailed instructions
 ### Data
 
 ### Authors
-Elliot Greenlee
-Angela McCabe
+Elliot Greenlee  
+Angela McCabe  
