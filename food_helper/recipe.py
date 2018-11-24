@@ -10,6 +10,7 @@ from food_helper.tools import generate_id
 
 
 class Recipe:
+    
     def __init__(self, name, description, cook_time, servings, food_type, ease, taste):
         self.id = generate_id(name)  # recipe identification string
         self.name = name  # name of the recipe
@@ -29,6 +30,28 @@ class Recipe:
         
         self.ease = ease  # how easy is it to cook
         self.taste = taste  # how good does it taste
+        
+
+class RecipeRelationsGraph:
+    
+    def __init__(self):
+        self.recipes = {}  # key:recipe ids, value:recipenodes
+    
+    def add_meal(self):
+        return
+    
+    def query_recipe(self):
+        return
+    
+    
+class RecipeRelationsNode:
+    
+    def __init__(self, recipe_id):
+        self.recipe_id = recipe_id
+        self.related_recipes = []  # list of related nodes
+    
+    
+    
         
         
         
