@@ -9,6 +9,7 @@ application.py
 import argparse
 import os
 import pickle
+import logging
 
 
 class Application:
