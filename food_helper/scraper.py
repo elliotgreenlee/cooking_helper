@@ -41,24 +41,43 @@ def is_good_response(resp):
             and content_type is not None
             and content_type.find('html') > -1)
 
-
 url = "https://www.blueapron.com/recipes/curry-chicken-pitas-with-cucumber-yogurt-sweet-chili-slaw"
 raw_html = get(url)
 html = BeautifulSoup(raw_html, 'html.parser')
 
-print(html)
-
 # title
 title_object = html.find_all('h1', class_="ba-recipe-title__main")[0]
-print(title_object.text)
+print(title_object.text.strip())
 
 sub_title_object = html.find_all('h2', class_="ba-recipe-title__sub mt-10")[0]
-print(sub_title_object.text)
+print(sub_title_object.text.strip())
+
+print()
 
 # description
 description_object = html.find_all('div', class_="recipe-main__description")[0]
-print(description_object.text)
+print(description_object.text.strip())
 
+print()
+
+# ingredients
+ingredients_list = []
+ingredients_object = html.find_all('ul', class_="ba-info-list ba-info-list--stacked col-md-4")[0]
+for list_object in ingredients_object.find_all('li', class_="ba-info-list__item"):
+
+    ingredient_object = list_object.find_all('a', class_="js-IngModalLink")
+    if not ingredient_object:
+        ingredient_object = list_object.find_all('div', class_="non-story")
+    if not ingredient_object:
+        print("help")
+
+    ingredient_parsed = ingredient_object[0].text.splitlines()
+    ingredient_magnitude = ingredient_parsed[2]
+    ingredient_unit = ingredient_parsed[3]
+    ingredient_name = ingredient_parsed[5]
+    print(ingredient_magnitude, ingredient_unit, ingredient_name)
+
+print()
 
 # time, servings, calories
 spans = []
@@ -68,11 +87,23 @@ for list_item in recipe_main_list.find_all('div', class_="ba-info-list__item-val
         spans.append(span)
         
 time_object = spans[0]
-print(time_object.text)
+print(time_object.text.strip())
 servings_object = spans[2]
-print(servings_object.text)
+print(servings_object.text.strip())
 calorie_object = spans[5]
-print(calorie_object.text)
+print(calorie_object.text.strip())
 
-    
+print()
+
+instructions_html = html.find_all('section', class_="section-recipe recipe-instructions p-15")[0]
+instruction_step_htmls = instructions_html.find_all('div', class_="col-md-6 col-xs-12")
+
+for instruction_step_html in instruction_step_htmls:
+    instruction_step_title_html = instruction_step_html.find_all('span', class_="step-title")[0]
+    instruction_step_text_html = instruction_step_html.find_all('div', class_="step-txt")[0]
+    print(instruction_step_title_html.text.strip())
+    print(instruction_step_text_html.text.strip())
+
+print()
+
 
