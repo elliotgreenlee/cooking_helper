@@ -46,8 +46,6 @@ url = "https://www.blueapron.com/recipes/curry-chicken-pitas-with-cucumber-yogur
 raw_html = get(url)
 html = BeautifulSoup(raw_html, 'html.parser')
 
-print(html)
-
 # title
 title_object = html.find_all('h1', class_="ba-recipe-title__main")[0]
 print(title_object.text)
